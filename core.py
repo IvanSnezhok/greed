@@ -31,8 +31,8 @@ def main():
     log.debug("Set logging level to INFO while the config is being loaded")
 
     # Ensure the template config file exists
-    if not os.path.isfile("config/template_config.toml"):
-        log.fatal("config/template_config.toml does not exist!")
+    if not os.path.isfile("config/config.toml"):
+        log.fatal("config/config.toml does not exist!")
         exit(254)
 
     # Check where the config path is located from the CONFIG_PATH environment variable
@@ -42,7 +42,7 @@ def main():
     if not os.path.isfile(config_path):
         log.debug("config/config.toml does not exist.")
 
-        with open("config/template_config.toml", encoding="utf8") as template_cfg_file, \
+        with open("config/config.toml", encoding="utf8") as template_cfg_file, \
                 open(config_path, "w", encoding="utf8") as user_cfg_file:
             # Copy the template file to the config file
             user_cfg_file.write(template_cfg_file.read())
@@ -52,7 +52,7 @@ def main():
         exit(1)
 
     # Compare the template config with the user-made one
-    with open("config/template_config.toml", encoding="utf8") as template_cfg_file, \
+    with open("config/config.toml", encoding="utf8") as template_cfg_file, \
             open(config_path, encoding="utf8") as user_cfg_file:
         template_cfg = nuconfig.NuConfig(template_cfg_file)
         user_cfg = nuconfig.NuConfig(user_cfg_file)

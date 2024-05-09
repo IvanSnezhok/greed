@@ -140,7 +140,6 @@ class Worker(threading.Thread):
 
             def __rmul__(self, other):
                 return self.__mul__(other)
-
             def __iadd__(self, other):
                 self.value += Price(other).value
                 return self
@@ -452,12 +451,19 @@ class Worker(threading.Thread):
         # Loop used to returning to the menu after executing a command
         while True:
             # Create a keyboard with the user main menu
+            # keyboard = [[telegram.KeyboardButton(self.loc.get("menu_order"))],
+            #             [telegram.KeyboardButton(self.loc.get("menu_order_status"))],
+            #             [telegram.KeyboardButton(self.loc.get("menu_add_credit"))],
+            #             [telegram.KeyboardButton(self.loc.get("menu_language"))],
+            #             [telegram.KeyboardButton(self.loc.get("menu_help")),
+            #              telegram.KeyboardButton(self.loc.get("menu_bot_info"))]]
+
             keyboard = [[telegram.KeyboardButton(self.loc.get("menu_order"))],
-                        [telegram.KeyboardButton(self.loc.get("menu_order_status"))],
-                        [telegram.KeyboardButton(self.loc.get("menu_add_credit"))],
-                        [telegram.KeyboardButton(self.loc.get("menu_language"))],
+                        [telegram.KeyboardButton(self.loc.get("menu_order_status")),
+                         telegram.KeyboardButton(self.loc.get("menu_add_credit"))],
                         [telegram.KeyboardButton(self.loc.get("menu_help")),
-                         telegram.KeyboardButton(self.loc.get("menu_bot_info"))]]
+                         telegram.KeyboardButton(self.loc.get("menu_language"))]]
+
             # Send the previously created keyboard to the user (ensuring it can be clicked only 1 time)
             self.bot.send_message(self.chat.id,
                                   self.loc.get("conversation_open_user_menu",
@@ -470,7 +476,6 @@ class Worker(threading.Thread):
                 self.loc.get("menu_add_credit"),
                 self.loc.get("menu_language"),
                 self.loc.get("menu_help"),
-                self.loc.get("menu_bot_info"),
             ])
             # After the user reply, update the user data
             self.update_user()
@@ -546,7 +551,7 @@ class Worker(threading.Thread):
             if callback.data == "cart_cancel":
                 # Stop waiting for user input and go back to the previous menu
                 return
-            # If a Add to Cart button has been pressed...
+            # If an Add to Cart button has been pressed...
             elif callback.data == "cart_add":
                 # Get the selected product, ensuring it exists
                 p = cart.get(callback.message.message_id)
@@ -908,7 +913,8 @@ class Worker(threading.Thread):
             self.bot.send_message(self.chat.id, self.loc.get("payment_cc_amount"),
                                   reply_markup=telegram.ReplyKeyboardMarkup(keyboard, one_time_keyboard=True))
             # Wait until a valid amount is sent
-            selection = self.__wait_for_regex(r"([0-9]+(?:[.,][0-9]+)?|" + self.loc.get("menu_cancel") + r")", cancellable=True)
+            selection = self.__wait_for_regex(r"([0-9]+(?:[.,][0-9]+)?|" + self.loc.get("menu_cancel") + r")",
+                                              cancellable=True)
             # If the user cancelled the action
             if isinstance(selection, CancelSignal):
                 # Exit the loop
@@ -926,10 +932,11 @@ class Worker(threading.Thread):
         self.invoice_payload = str(uuid.uuid4())
         # The amount is valid, fetch btc amount and address
         btc_price = Blockonomics.fetch_new_btc_price()
-        satoshi_amount = int(1.0e8*float(raw_value)/float(btc_price))
-        btc_amount = satoshi_amount/1.0e8
+        satoshi_amount = int(1.0e8 * float(raw_value) / float(btc_price))
+        btc_amount = satoshi_amount / 1.0e8
         # Check to re-use address
-        transaction = self.session.query(db.BtcTransaction).filter(db.BtcTransaction.user_id == self.user.user_id).filter(db.BtcTransaction.status == -1).one_or_none()
+        transaction = self.session.query(db.BtcTransaction).filter(
+            db.BtcTransaction.user_id == self.user.user_id).filter(db.BtcTransaction.status == -1).one_or_none()
         if transaction:
             btc_address = transaction.address
             # Update btc_price, satoshi, currency, timestamp
@@ -940,13 +947,13 @@ class Worker(threading.Thread):
             btc_address = Blockonomics.new_address().json()["address"]
             # Create a new database btc transaction
             new_transaction = db.BtcTransaction(user=self.user,
-                                         price = btc_price,
-                                         value=0,
-                                         currency = self.cfg["Payments"]["currency"],
-                                         status = -1,
-                                         timestamp = datetime.datetime.now(),
-                                         address=btc_address,
-                                         txid='')
+                                                price=btc_price,
+                                                value=0,
+                                                currency=self.cfg["Payments"]["currency"],
+                                                status=-1,
+                                                timestamp=datetime.datetime.now(),
+                                                address=btc_address,
+                                                txid='')
             #Add and commit the btc transaction
             self.session.add(new_transaction)
         self.session.commit()
@@ -1337,8 +1344,7 @@ class Worker(threading.Thread):
         """Help menu. Allows the user to ask for assistance, get a guide or see some info about the bot."""
         log.debug("Displaying __help_menu")
         # Create a keyboard with the user help menu
-        keyboard = [[telegram.KeyboardButton(self.loc.get("menu_guide"))],
-                    [telegram.KeyboardButton(self.loc.get("menu_contact_shopkeeper"))],
+        keyboard = [[telegram.KeyboardButton(self.loc.get("menu_contact_shopkeeper"))],
                     [telegram.KeyboardButton(self.loc.get("menu_cancel"))]]
         # Send the previously created keyboard to the user (ensuring it can be clicked only 1 time)
         self.bot.send_message(self.chat.id,
@@ -1573,10 +1579,16 @@ class Worker(threading.Thread):
             keyboard.append([telegram.KeyboardButton(lang)])
             options[lang] = "pt_br"
         # Send the previously created keyboard to the user (ensuring it can be clicked only 1 time)
+        # keyboard.append([telegram.KeyboardButton(self.loc.get("menu_cancel"))])
         self.bot.send_message(self.chat.id,
                               self.loc.get("conversation_language_select"),
                               reply_markup=telegram.ReplyKeyboardMarkup(keyboard, one_time_keyboard=True))
         # Wait for an answer
+        # selection = self.__wait_for_specific_message(
+        # if isinstance(selection, CancelSignal):
+        #     # Send him back to the previous menu
+        #     return
+        # elif
         response = self.__wait_for_specific_message(list(options.keys()))
         # Set the language to the corresponding value
         self.user.language = options[response]
