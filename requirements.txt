@@ -21,3 +21,5 @@ urllib3==1.26.5
 # Other dependecies
 flask
 gunicorn
+
+qrcode~=7.4.2

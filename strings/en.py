@@ -1,434 +1,467 @@
 # Strings / localization file for greed
 # Can be edited, but DON'T REMOVE THE REPLACEMENT FIELDS (words surrounded by {curly braces})
 
-# Currency symbol
-currency_symbol = "€"
+currency_symbol = "$"
 
-# Positioning of the currency symbol
-currency_format_string = "{symbol} {value}"
-
-# Quantity of a product in stock
-in_stock_format_string = "{quantity} available"
-
-# Copies of a product in cart
-in_cart_format_string = "{quantity} in cart"
-
-# Product information
-product_format_string = "<b>{name}</b>\n" \
-                        "{description}\n" \
-                        "{price}\n" \
-                        "<b>{cart}</b>"
-
-# Order number, displayed in the order info
 order_number = "Order #{id}"
 
-# Order info string, shown to the admins
-order_format_string = "by {user}\n" \
-                      "Created on {date}\n" \
-                      "\n" \
-                      "{items}\n" \
-                      "TOTAL: <b>{value}</b>\n" \
-                      "\n" \
-                      "Customer notes: {notes}\n"
-
-# Order info string, shown to the user
-user_order_format_string = "{status_emoji} <b>Order {status_text}</b>\n" \
-                           "{items}\n" \
-                           "TOTAL: <b>{value}</b>\n" \
-                           "\n" \
-                           "Notes: {notes}\n"
-
-# Transaction page is loading
 loading_transactions = "<i>Loading transactions...\n" \
                        "Please wait a few seconds.</i>"
 
-# Transactions page
 transactions_page = "Page <b>{page}</b>:\n" \
                     "\n" \
                     "{transactions}"
 
-# transactions.csv caption
-csv_caption = "A 📄 .csv file containing all transactions stored in the bot database was generated.\n" \
-              "You can open this file with other programs, such as LibreOffice Calc, to process" \
-              " the data."
+csv_caption = "A 📄 .csv file containing all the transactions from the bot's database has been generated.\n" \
+              "You can open the file with LibreOffice Calc to view the details."
 
-# Conversation: the start command was sent and the bot should welcome the user
-conversation_after_start = "Hello!\n" \
-                           "Welcome to greed!\n" \
-                           "This is the 🅱️ <b>Beta</b> version of the software.\n" \
-                           "It is fully usable, but there may be some bugs are still present.\n" \
-                           "If you find any, please report them at https://github.com/Steffo99/greed/issues."
+conversation_after_start = "Hello 🙏🏾\nWelcome to the Grace Glade shop🎅🏽🍄"
 
-# Conversation: to send an inline keyboard you need to send a message with it
 conversation_open_user_menu = "What would you like to do?\n" \
                               "💰 You have <b>{credit}</b> in your wallet.\n" \
                               "\n" \
-                              "<i>Press a key on the bottom keyboard to select an operation.\n" \
-                              "If the keyboard has not opened, you can open it by pressing the button with four small" \
-                              " squares in the message bar.</i>"
+                              "<i>Select an option from the keyboard.\n" \
+                              "If the keyboard is not visible, you can activate it by pressing the button with four squares at the bottom</i>."
 
-# Conversation: like above, but for administrators
+profile_info = "ID: {id}\nName: {name}\nBalance: {balance}\nWith us since: {time_with_us}"
+day = "day"
+days_2_4 = "days"
+days_many = "days"
+
+ask_number_of_buttons = "How many buttons do you want to add to the message? (from 0 to 6)"
+
+invalid_number_of_buttons = "Invalid number of buttons. Please enter a number from 0 to 6."
+
+error_cart_menu = "An error occurred while processing the cart. Please try again or contact the administrator."
+
+error_no_deposits_for_promocode = "⚠️ To use a promo code, you need to first top up the bot's account. Please add funds and try again."
+promocode_already_used = "You have already used this promo code."
+promocode_expired = "This promo code is no longer available."
+promocode_applied = "Promo code applied! {amount} has been added to your balance."
+error_applying_promocode = "An error occurred while applying the promo code. Please try again later."
+
+ask_product_name = "Enter the product name:"
+edit_current_value = "Current value: {value}"
+error_duplicate_name = "A product with this name already exists. Please choose a different name."
+
+conversation_admin_product_menu = "Product management menu. Choose an action:"
+menu_add_product = "➕ Add new product"
+menu_edit_product = "✏️ Edit product"
+menu_delete_product = "🗑️ Delete product"
+conversation_admin_select_product_to_edit = "Select a product to edit:"
+
+menu_edit_cart = "✏️ Edit cart"
+cart_edit_header = "Editing cart:"
+
+success_product_edited = "✅ Product successfully edited!"
+
+ask_button_text = "Enter the text for button {button_number}:"
+
+ask_button_url = "Enter the URL for button {button_number} (must start with http:// or https://):"
+
+checkout_canceled = "Order checkout canceled."
+
+menu_cart = "🛒 Cart"
+cart_empty = "Your cart is empty."
+cart_contents = "Cart contents:"
+cart_total = "Total amount:"
+cart_cleared = "Cart cleared."
+
+menu_go_to_cart = "🛒 Go to cart"
+menu_main_menu = "🏠 Main menu"
+
+add_funds = "💰 Add funds to wallet"
+return_to_main_menu = "🏠 Return to main menu"
+
+insufficient_funds = ("Unfortunately, you don't have enough funds to complete the order.\nTotal amount: {"
+                      "total}\nYour balance: {balance}\nShortage: {shortage}\nPlease top up your balance and "
+                      "try again.")
+
+ask_broadcast_message = "Enter the message text for broadcasting:"
+ask_broadcast_image = "Do you want to add an image to the message?"
+send_broadcast_image = "Please send the image for broadcasting."
+confirm_broadcast = "Are you sure you want to send this message to all users?"
+broadcast_canceled = "Broadcast canceled."
+broadcast_complete = "Broadcast completed. Successfully sent: {success_count}/{total_count}"
+yes = "Yes"
+no = "No"
+
+confirm_delete_category = "Are you sure you want to delete the category {category}?"
+confirm_delete_subcategory = "Are you sure you want to delete the subcategory {subcategory}?"
+menu_confirm = "✅ Confirm"
+deletion_canceled = "Deletion canceled."
+
+ask_category_image = "Send a photo for the category (or press 'Skip'):"
+menu_skip = "⏭ Skip"
+order_canceled = "Order canceled. Cart cleared."
+select_category_for_product = "Select a category for the product:"
+
+menu_add_subcategory = "➕ Add subcategory"
+menu_edit_category = "✏️ Edit category"
+menu_view_subcategories = "👁️ View subcategories"
+category_action_prompt = "Choose an action for the category:"
+ask_category_name = "Enter the category name:"
+ask_category_description = "Enter the category description (or skip this step):"
+category_deleted = "Category successfully deleted."
+category_not_found = "Category not found."
+
+product_price = "Price"
+product_in_cart = "In cart"
+product_pieces = "pcs"
+product_subtotal = "Subtotal in cart"
+product_added_to_cart = "Product added to cart"
+product_removed_from_cart = "Product removed from cart"
+menu_add_to_cart = "➕ Add to cart"
+menu_remove_from_cart = "➖ Remove from cart"
+
+post_order_options = "What would you like to do next?"
+continue_shopping = "🛒 Continue shopping"
+no_categories_to_delete = "There are no categories to delete."
+no_subcategories_to_delete = "There are no subcategories to delete."
+select_category_to_delete = "Select a category to delete:"
+select_subcategory_to_delete = "Select a subcategory to delete:"
+subcategory_deleted = "Subcategory successfully deleted."
+subcategory_not_found = "Subcategory not found."
+
+choose_pickup_point = "Choose a pickup point:"
+error_no_pickup_points = "Sorry, there are no pickup points available at the moment. Please choose another delivery method."
+ask_nova_poshta_city = "Enter the delivery city:"
+ask_nova_poshta_office = "Enter the Nova Poshta office number:"
+ask_nova_poshta_phone = "Enter your phone number:"
+ask_nova_poshta_name = "Enter your full name:"
+ask_kyiv_address = "Enter the delivery address in Kyiv:"
+ask_kyiv_phone = "Enter your contact phone number:"
+error_checkout_canceled = "Order checkout canceled. Please try again or contact customer support."
+
 conversation_open_admin_menu = "You are a 💼 <b>Manager</b> of this store!\n" \
                                "What would you like to do?\n" \
                                "\n" \
-                               "<i>Press a key on the bottom keyboard to select an operation.\n" \
-                               "If the keyboard has not opened, you can open it by pressing the button with four small" \
-                               " squares in the message bar.</i>"
+                               "<i>Select an option from the keyboard.\n" \
+                               "If the keyboard is not visible, you can activate it by pressing the button with four squares at the bottom</i>."
 
-# Conversation: select a payment method
-conversation_payment_method = "How do you want to add funds to your wallet?"
+conversation_payment_method = "How would you like to add funds to your wallet?"
 
-# Conversation: select a product to edit
-conversation_admin_select_product = "✏️ What product do you want to edit?"
+menu_edit_admins = "👥 Edit managers"
 
-# Conversation: select a product to delete
-conversation_admin_select_product_to_delete = "❌ What product do you want to delete?"
+admin_properties = "<b>Access rights for {name}:</b>"
+prop_edit_products = "Edit products"
+prop_edit_categories = "Edit categories"
+prop_edit_subcategories = "Edit subcategories"
+prop_receive_orders = "Receive orders"
+prop_create_transactions = "Create transactions"
+prop_display_on_help = "Display in help"
 
-# Conversation: select a user to edit
-conversation_admin_select_user = "Select an user to edit."
+conversation_confirm_admin_promotion = "Are you sure you want to grant this user manager rights?"
 
-# Conversation: click below to pay for the purchase
-conversation_cart_actions = "<i>Add products to cart by scrolling up and pressing the Add button below" \
-                            " the products you want to add to the cart. When you're done, go back to this message and" \
-                            " press the Done button below.</i>"
+promocode_management_menu = "Choose an action for promo code management:"
+menu_manage_promocodes = "🎟 Manage promo codes"
+menu_delete_promocode = "🗑 Delete promo code"
+choose_promocode_type = "Choose the promo code type:"
+choose_amount_type = "Choose the amount type:"
+ask_fixed_amount = "Enter the fixed amount:"
+ask_min_amount = "Enter the minimum amount:"
+ask_max_amount = "Enter the maximum amount:"
+ask_uses_number = "Enter the number of possible activations:"
+promocode_created_qr = "QR code created: {code}\nLink: {link}"
+promocode_created_text = "Promo code created: {code}"
+promocode_info = "Code: {code}\nType: {type}\nAmount: {amount}\nActivations left: {uses_left}/{total_uses}\nCreated by: {creator}\nUsed: {used_count} times\nTotal amount: {total_amount}"
+no_active_promocodes = "There are no active promo codes."
+text_promocode = "Text"
+no_promocodes_to_delete = "There are no promo codes to delete."
+choose_promocode_to_delete = "Choose a promo code to delete:"
+promocode_deleted = "Promo code {code} deleted."
+promocode_not_found = "Promo code not found."
 
-# Conversation: confirm the cart contents
-conversation_confirm_cart = "🛒 Your cart contains the following products:\n" \
+conversation_admin_select_product_to_delete = "❌ Which product needs to be deleted?"
+
+cancel_order = "❌ Cancel order"
+confirm = "✅ Confirm"
+confirm_delivery_method = "You have chosen the delivery method: {method}\nDelivery price: {price}\nInformation: {info}\n\nConfirm your choice:"
+or_press_back = "Or press 'Back' to return"
+
+conversation_admin_select_user = "Select a user to edit."
+
+conversation_cart_actions = "<i>Add products to the cart by pressing the Add button." \
+                            "  When you've made your selection, return to this message" \
+                            " and press the Done button.</i>"
+
+conversation_confirm_cart = "🛒 You have the following products in your cart:\n" \
                             "{product_list}" \
                             "Total: <b>{total_cost}</b>\n" \
                             "\n" \
-                            "<i>If you want to proceed, press the Done button below this message.\n" \
-                            "To cancel, press the Cancel button.</i>"
+                            "<i>To continue, press Done.\n" \
+                            "If you've changed your mind, choose Cancel.</i>"
 
-# Live orders mode: start
 conversation_live_orders_start = "You are in <b>Live Orders</b> mode\n" \
-                                 "All new orders placed by customers will appear in real time in this chat, and you" \
-                                 " will be able to mark them as ✅ Completed" \
-                                 " or ✴️ Refund the credit to the customer."
+                                 "All new orders from customers will appear in this chat in real-time," \
+                                 " and you can mark them as ✅ Completed" \
+                                 " or ✴️ Refund to the customer."
 
-# Live orders mode: stop receiving messages
-conversation_live_orders_stop = "<i>Press the Stop button below this message to stop the" \
-                                " feed.</i>"
+conversation_live_orders_stop = "<i>Press the Stop button in this chat to exit this mode.</i>"
 
-# Conversation: help menu has been opened
-conversation_open_help_menu = "What kind of help do you need?"
+conversation_open_help_menu = "How can we help you?"
 
-# Conversation: confirm promotion to admin
-conversation_confirm_admin_promotion = "Are you sure you want to promote this user to 💼 Manager?\n" \
-                                       "It is an irreversible action!"
-
-# Conversation: language select menu header
 conversation_language_select = "Select a language:"
 
-# Conversation: switching to user mode
-conversation_switch_to_user_mode = " You are switching to 👤 Customer mode.\n" \
-                                   "If you want to go back to the 💼 Manager menu, restart the conversation with /start."
+conversation_switch_to_user_mode = " You have switched to 👤 Customer mode.\n" \
+                                   "If you want to return to the 💼 Manager menu, restart the conversation with /start."
 
-# Notification: the conversation has expired
-conversation_expired = "🕐  I haven't received any messages in a while, so I closed the conversation to save" \
-                       " resources.\n" \
-                       "If you want to start a new one, send a new /start command."
+conversation_expired = "🕐  I haven't received any messages for a long time, so I ended the conversation" \
+                       " to conserve resources.\n" \
+                       "To start again, send the /start command."
 
-# User menu: order
-menu_order = "🛒 Order products"
+conversation_admin_select_category = "✏️ Which category do you want to edit"
 
-# User menu: order status
+ask_subcategory_name = "Enter the subcategory name:"
+
+ask_parent_category = "Select the parent category for the new subcategory:"
+
+error_no_root_categories = "Error: there are no root categories. Please create a root category first."
+
+success_category_created = "✅ Category successfully created!"
+
+success_subcategory_created = "✅ Subcategory successfully created!"
+
+ask_subcategory_description = "Enter the subcategory description (or skip this step):"
+
+ask_subcategory_image = "Send an image for the subcategory (or skip this step):"
+
+conversation_select_category = "Select a category"
+
+conversation_order_category = "Select a category:"
+
+error_product_not_found = "Product not found."
+
+menu_back = "⬅️ Back"
+menu_checkout = "💳 Checkout"
+menu_clear_cart = "🗑️ Clear cart"
+
+menu_credit_history = "📈 Top-up history"
+
+menu_promocode = "🤩 Enter promo code"
+
+ask_promocode = "Enter the promo code:"
+
+menu_order = "🛒 Products"
+
+menu_uncategorized = "Uncategorized"
+
+menu_go_back = "🔙 Go back"
+
 menu_order_status = "🛍 My orders"
 
-# User menu: add credit
-menu_add_credit = "💵 Add funds"
+menu_add_credit = "💵 Add funds to wallet"
 
-# User menu: bot info
-menu_bot_info = "ℹ️ Bot info"
+menu_profile = "🧾 Profile"
 
-# User menu: cash
-menu_cash = "💵 With cash"
+menu_create_promocode = "Create promo code/QR code"
 
-# User menu: credit card
-menu_credit_card = "💳 By credit card"
+menu_list_promocodes = "Promo code statistics"
 
-# Admin menu: products
+credit_history_null = "You haven't made any top-ups yet!"
+
+credit_history = "Your top-up history:"
+
+menu_cash = "💵 Cash"
+
+menu_credit_card = "💳 Credit card"
+
 menu_products = "📝️ Products"
 
-# Admin menu: orders
 menu_orders = "📦 Orders"
 
-# Menu: transactions
 menu_transactions = "💳 Transaction list"
 
-# Menu: edit credit
 menu_edit_credit = "💰 Create transaction"
 
-# Admin menu: go to user mode
-menu_user_mode = "👤 Switch to customer mode"
+menu_user_mode = "👤 Customer mode"
 
-# Admin menu: add product
-menu_add_product = "✨ New product"
-
-# Admin menu: delete product
-menu_delete_product = "❌ Delete product"
-
-# Menu: cancel
 menu_cancel = "🔙 Cancel"
 
-# Menu: skip
-menu_skip = "⏭ Skip"
-
-# Menu: done
 menu_done = "✅️ Done"
 
-# Menu: pay invoice
+menu_categories = "📝️ Categories"
+
+menu_add_category = "✨ New category"
+
+menu_delete_category = "❌ Delete category"
+
 menu_pay = "💳 Pay"
 
-# Menu: complete
 menu_complete = "✅ Complete"
 
-# Menu: refund
 menu_refund = "✴️ Refund"
 
-# Menu: stop
 menu_stop = "🛑 Stop"
 
-# Menu: add to cart
-menu_add_to_cart = "➕ Add"
+menu_all_products = "All products"
 
-# Menu: remove from cart
-menu_remove_from_cart = "➖ Remove"
+menu_help = "❓ Help"
 
-# Menu: help menu
-menu_help = "❓ Help / Support"
-
-# Menu: guide
 menu_guide = "📖 Guide"
 
-# Menu: next page
+menu_promo_text = "Text"
+
+menu_promo_qr = "QR code"
+
+menu_promo_fixed = "Fixed"
+
+menu_promo_range = "Range"
+
 menu_next = "▶️ Next"
 
-# Menu: previous page
 menu_previous = "◀️ Previous"
 
-# Menu: contact the shopkeeper
-menu_contact_shopkeeper = "👨‍💼 Contact the store"
+menu_contact_shopkeeper = "👨‍💼 Shop contacts"
 
-# Menu: generate transactions .csv file
 menu_csv = "📄 .csv"
 
-# Menu: edit admins list
-menu_edit_admins = "🏵 Edit Managers"
-
-# Menu: language
 menu_language = "🇬🇧 Language"
 
-# Emoji: unprocessed order
-emoji_not_processed = "*️⃣"
-
-# Emoji: completed order
-emoji_completed = "✅"
-
-# Emoji: refunded order
-emoji_refunded = "✴️"
-
-# Emoji: yes
 emoji_yes = "✅"
 
-# Emoji: no
 emoji_no = "🚫"
 
-# Text: unprocessed order
-text_not_processed = "pending"
+ask_product_description = "What will be the product description?"
 
-# Text: completed order
-text_completed = "completed"
+ask_product_price = "What will be the price?\n" \
+                    "Enter <code>X</code> if the product is not currently for sale."
 
-# Text: refunded order
-text_refunded = "refunded"
-
-# Text: product not for sale
-text_not_for_sale = "Not for sale"
-
-# Add product: name?
-ask_product_name = "What should the product name be?"
-
-# Add product: description?
-ask_product_description = "What should the product description be?"
-
-# Add product: price?
-ask_product_price = "What should the product price be?\n" \
-                    "Enter <code>X</code> if don't want the product to be for sale yet."
-
-# Add product: image?
-ask_product_image = "🖼 What image do you want the product to have?\n" \
+ask_product_image = "🖼 What image should be added to the product?\n" \
                     "\n" \
-                    "<i>Send the photo, or Skip this phase and don't add any image.</i>"
+                    "<i>Send a photo, or Skip this step.</i>"
 
-# Order product: notes?
-ask_order_notes = "Would you like to leave a note along with the order?\n" \
-                  "💼 It will be visible to the store Managers.\n" \
+ask_order_notes = "Leave a message with this purchase?\n" \
+                  "💼 The message will be available to the Store Manager.\n" \
                   "\n" \
-                  "<i>Send a message with the note you want to leave, or press the Skip button below this" \
-                  " message to leave nothing.</i>"
+                  "<i>Send your message, or press Skip" \
+                  " to not leave a message.</i>"
 
-# Refund product: reason?
-ask_refund_reason = " Attach a reason to this refund.\n" \
-                    "👤  It will be visible to the customer."
+ask_refund_reason = " Write the reason for the refund.\n" \
+                    "👤  The reason will be available to the customer."
 
-# Edit credit: notes?
-ask_transaction_notes = " Attach a note to this transaction.\n" \
-                        "👤 It will be visible to the customer after crediting / debiting" \
-                        " and to 💼 Admins in the transaction log."
+ask_transaction_notes = " Add a message to the transaction.\n" \
+                        "👤 The message will be available to the customer after the top-up/withdrawal" \
+                        " and to the 💼 Administrator in the transaction logs."
 
-# Edit credit: amount?
-ask_credit = "How do you want to change the customer's credit?\n" \
+ask_credit = "How do you want to change the customer's balance?\n" \
              "\n" \
-             "<i>Send a message containing the amount.\n" \
-             "Use the sign </i><code>+</code><i> to add credit to the customer's account," \
-             " and the sign </i><code>-</code><i> to deduce it.</i>"
+             "<i>Send a message with the amount.\n" \
+             "Use </i><code>+</code><i> to add funds to the account," \
+             " and </i><code>-</code><i> to deduct funds.</i>"
 
-# Header for the edit admin message
-admin_properties = "<b>Permissions of {name}:</b>"
+downloading_image = "I'm downloading the photo!\n" \
+                    "It may take some time... Please be patient!\n" \
+                    "I won't be able to respond while the download is in progress."
 
-# Edit admin: can edit products?
-prop_edit_products = "Edit products"
-
-# Edit admin: can receive orders?
-prop_receive_orders = "Receive orders"
-
-# Edit admin: can create transactions?
-prop_create_transactions = "Manage transactions"
-
-# Edit admin: show on help message?
-prop_display_on_help = "Show to customer"
-
-# Thread has started downloading an image and might be unresponsive
-downloading_image = "I'm downloading your photo!\n" \
-                    "It might take a while... Please be patient!\n" \
-                    "I won't be able to answer you while I'm downloading."
-
-# Edit product: current value
-edit_current_value = "The current value is:\n" \
-                     "<pre>{value}</pre>\n" \
-                     "\n" \
-                     "<i>Press the Skip button below this message to keep the same value.</i>"
-
-# Payment: cash payment info
-payment_cash = "You can pay in cash at the physical location of the store.\n" \
-               "Pay at checkout, and give this id to the manager:\n" \
+payment_cash = "You can top up with cash directly in the store.\n" \
+               "Make the payment and give this id to the manager:\n" \
                "<b>{user_cash_id}</b>"
 
-# Payment: invoice amount
-payment_cc_amount = "How many funds do you want to add to your wallet?\n" \
+payment_cc_amount = "How much would you like to add to your wallet?\n" \
                     "\n" \
-                    "<i>Select an amount with the buttons below, or enter it manually with the normal keyboard</i>"
+                    "<i>Choose an amount from the suggested values, or enter manually in a message.</i>"
 
-# Payment: add funds invoice title
-payment_invoice_title = "Adding funds"
+payment_invoice_title = "Top-up"
 
-# Payment: add funds invoice description
 payment_invoice_description = "Paying this invoice will add {amount} to your wallet."
 
-# Payment: label of the labeled price on the invoice
-payment_invoice_label = "Reload"
+payment_invoice_label = "Payment"
 
-# Payment: label of the labeled price on the invoice
-payment_invoice_fee_label = "Transaction fee"
+payment_invoice_fee_label = "Top-up fee"
 
-# Notification: order has been placed
-notification_order_placed = "A new order was placed:\n" \
+notification_order_placed = "A new order has been received:\n" \
                             "\n" \
                             "{order}"
 
-# Notification: order has been completed
-notification_order_completed = "Your order has been completed!\n" \
+notification_order_completed = "Your order has been successfully completed!\n" \
                                "\n" \
                                "{order}"
 
-# Notification: order has been refunded
-notification_order_refunded = "Your order has been refunded!\n" \
+notification_order_refunded = "Your order has been canceled. Funds have been refunded!\n" \
                               "\n" \
                               "{order}"
 
-# Notification: a manual transaction was applied
-notification_transaction_created = "ℹ️  A new transaction has been applied to your wallet:\n" \
+notification_transaction_created = "ℹ️  New transaction in your wallet:\n" \
                                    "{transaction}"
 
-# Refund reason
-refund_reason = "Refund reason:\n" \
-                "{reason}"
-
-# Info: informazioni sul bot
-bot_info = 'This bot is using <a href="https://github.com/Steffo99/greed">greed</a>,' \
-           ' a framework by @Steffo for Telegram payments released under the' \
-           ' <a href="https://github.com/Steffo99/greed/blob/master/LICENSE.txt">' \
-           'Affero General Public License 3.0</a>.\n'
-
-# Help: guide
-help_msg = "greed's guide is available at this address:\n" \
-           "https://github.com/Steffo99/greed/wiki"
-
-# Help: contact shopkeeper
-contact_shopkeeper = "Currently, the staff available to provide user assistance is composed of:\n" \
+contact_shopkeeper = "The following staff members are currently available and can help:\n" \
                      "{shopkeepers}\n" \
-                     "<i>Click / Tap one of their names to contact them in a Telegram chat.</i>"
+                     "<i>Choose one and write to them in Telegram chat.</i>"
 
-# Success: product has been added/edited to the database
-success_product_edited = "✅ The product has been successfully added/modified!"
+success_category_edited = "✅ Category successfully created/updated!"
 
-# Success: product has been added/edited to the database
-success_product_deleted = "✅ The product has been successfully deleted!"
+ask_category_parent = "Select the parent category for this category (or 'None' for root category):"
 
-# Success: order has been created
-success_order_created = "✅ The order was sent successfully!\n" \
+success_product_deleted = "✅ Product successfully deleted!"
+
+success_order_created = "✅ Order successfully sent!\n" \
                         "\n" \
                         "{order}"
 
-# Success: order was marked as completed
-success_order_completed = "✅ You marked the order #{order_id} as completed."
+success_order_refunded = "✴️ Funds for order #{order_id} have been refunded."
 
-# Success: order was refunded successfully
-success_order_refunded = "✴️ Order #{order_id} was refunded."
-
-# Success: transaction was created successfully
-success_transaction_created = "✅ The transaction was successfully created!\n" \
+success_transaction_created = "✅ Transaction successfully created!\n" \
                               "{transaction}"
 
-# Error: message received not in a private chat
-error_nonprivate_chat = "⚠️ This bot only works in private chats."
+error_payment_amount_over_max = "⚠️ The maximum amount for a single transaction is {max_amount}."
 
-# Error: a message was sent in a chat, but no worker exists for that chat.
-# Suggest the creation of a new worker with /start
-error_no_worker_for_chat = "⚠️ The conversation with the bot was interrupted.\n" \
-                           "To restart it, send the /start command to the bot."
+error_payment_amount_under_min = "⚠️ The minimum amount for a single transaction is {min_amount}."
 
-# Error: a message was sent in a chat, but the worker for that chat is not ready.
-error_worker_not_ready = "🕒 The conversation with the bot is currently starting.\n" \
-                         "Please, wait a few moments before sending more commands!"
+error_during_checkout = "An error occurred during checkout. Please try again later."
+order_confirmation = "Order #{order_id} successfully created!\nTotal amount: {total}\nDelivery method: {delivery_method}"
+manage_delivery_and_pickup = "Choose an action to manage delivery and pickup:"
+menu_view_delivery_methods = "👀 View delivery methods"
+menu_view_pickup_points = "👀 View pickup points"
+view_delivery_methods = "Select a delivery method to edit:"
+edit_pickup_point = "Choose what you want to change:"
+edit_pickup_point_address = "Change address"
+edit_pickup_point_description = "Change description"
+toggle_pickup_point_status = "Change status (active/inactive)"
+ask_new_pickup_point_address = "Enter the new address for the pickup point:"
+ask_new_pickup_point_description = "Enter the new description for the pickup point:"
+error_pickup_point_not_found = "❌ Pickup point not found."
+success_pickup_point_updated = "✅ Pickup point successfully updated!"
 
-# Error: add funds amount over max
-error_payment_amount_over_max = "⚠️ The maximum amount that can be added in a single transaction is {max_amount}."
+choose_delivery_method = "Choose a delivery method:"
+ask_pickup_point_address = "Enter the address of the pickup point:"
+ask_pickup_point_description = "Enter a description for the pickup point (or skip this step):"
+success_pickup_point_added = "✅ Pickup point successfully added!"
+no_pickup_points = "There are currently no active pickup points."
+pickup_points_list = "List of pickup points:"
+menu_add_pickup_point = "📍 Add pickup point"
+menu_broadcast_message = "📢 Broadcast message"
 
-# Error: add funds amount under min
-error_payment_amount_under_min = "⚠️ The minimum amount that can be added in a single transaction is {min_amount}."
+menu_add_delivery_method = "➕ Add new delivery method"
+ask_delivery_method_name = "Enter the name of the new delivery method:"
+ask_delivery_method_price = "Enter the delivery price (in minimum currency units):"
+success_delivery_method_added = "✅ New delivery method successfully added!"
+error_delivery_method_not_found = "❌ Delivery method not found."
+edit_delivery_method = "Choose what you want to change:"
+edit_delivery_method_name = "Change name"
+edit_delivery_method_price = "Change price"
+toggle_delivery_method_status = "Change status (active/inactive)"
+ask_new_delivery_method_name = "Enter the new name for the delivery method:"
+ask_new_delivery_method_price = "Enter the new price for delivery (in minimum currency units):"
+success_delivery_method_updated = "✅ Delivery method successfully updated!"
 
-# Error: the invoice has expired and can't be paid
-error_invoice_expired = "⚠️ This invoice has expired and was canceled. If you still want to add funds, use the Add" \
-                        " funds menu option."
+error_not_enough_credit = "⚠️ You don't have enough funds to complete the order."
 
-# Error: a product with that name already exists
-error_duplicate_name = "️⚠️ A product with the same name already exists."
-
-# Error: not enough credit to order
-error_not_enough_credit = "⚠️ You do not have enough credit to place the order."
-
-# Error: order has already been cleared
 error_order_already_cleared = "⚠️  This order has already been processed."
 
-# Error: no orders have been placed, so none can be shown
-error_no_orders = "⚠️  You haven't placed any order yet, so there is nothing to display."
+error_no_orders = "⚠️  You haven't made any orders yet, so it's empty here."
 
-# Error: selected user does not exist
-error_user_does_not_exist = "⚠️  The selected user does not exist."
+error_user_does_not_exist = "⚠️  This user does not exist."
 
-# Fatal: conversation raised an exception
-fatal_conversation_exception = "☢️ Oh no! An <b>error</b> interrupted this conversation\n" \
-                               "The error was reported to the bot owner so that he can fix it.\n" \
-                               "To restart the conversation, send the /start command again."
+fatal_conversation_exception = "☢️ Oh no! An <b>error</b> interrupted our conversation\n" \
+                               "The bot owner has been notified about the error.\n" \
+                               "To start the conversation again, send the /start command."
+help_msg = ""
+
+error_no_delivery_methods = "There are currently no active delivery methods."
+
+error_listing_promocodes = "An error occurred while listing promo codes."
+
+invalid_promocode = "Invalid promo code"
+
+bot_info = ""

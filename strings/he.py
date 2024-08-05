@@ -1,17 +1,18 @@
 # Strings / localization file for greed
 # Can be edited, but DON'T REMOVE THE REPLACEMENT FIELDS (words surrounded by {curly braces})
+# Current localization is Hebrew
 
 # Currency symbol
-currency_symbol = "€"
+currency_symbol = "₪"
 
 # Positioning of the currency symbol
-currency_format_string = "{symbol} {value}"
+currency_format_string = "{value} {symbol}"
 
 # Quantity of a product in stock
-in_stock_format_string = "מוצרים למכירה {quantity}"
+in_stock_format_string = "{quantity} במלאי"
 
 # Copies of a product in cart
-in_cart_format_string = "פריטים בעגלה {quantity}"
+in_cart_format_string = "{quantity} בעגלה"
 
 # Product information
 product_format_string = "<b>{name}</b>\n" \
@@ -20,407 +21,440 @@ product_format_string = "<b>{name}</b>\n" \
                         "<b>{cart}</b>"
 
 # Order number, displayed in the order info
-order_number = " #{id} הזמנה מספר"
+order_number = "הזמנה מס' #{id}"
 
 # Order info string, shown to the admins
-order_format_string = "{user} על ידי\n" \
-                      "{date} נוצר בתאריך\n" \
+order_format_string = "על ידי {user}\n" \
+                      "נוצר ב-{date}\n" \
                       "\n" \
                       "{items}\n" \
-                      "<b>{value}</b>: סך הכל\n" \
+                      "סה\"כ: <b>{value}</b>\n" \
                       "\n" \
-                      "{notes}: הערות הקונה\n"
+                      "הערות הלקוח: {notes}\n"
 
 # Order info string, shown to the user
 user_order_format_string = "{status_emoji} <b>הזמנה {status_text}</b>\n" \
                            "{items}\n" \
-                           "סך הכל: <b>{value}</b>\n" \
+                           "סה\"כ: <b>{value}</b>\n" \
                            "\n" \
                            "הערות: {notes}\n"
 
 # Transaction page is loading
-loading_transactions = "<i>טוען הזמנות...\n" \
-                       "פעולה זו יכולה לקחת כמה דקות</i>"
+loading_transactions = "<i>טוען עסקאות...\n" \
+                       "אנא המתן מספר שניות.</i>"
 
 # Transactions page
 transactions_page = "עמוד <b>{page}</b>:\n" \
                     "\n" \
                     "{transactions}"
 
-# transactions.csv caption
-csv_caption = "קובץ מסד נתונים עם כל פירוטי העסקאות נוצר כעת\n" \
-              "תוכל להשתמש במגוון כלי מסד נתונים כדי לפתוח קובץ זה" \
-              " ולראות את כל הנתונים"
+# Strings / localization file for greed
+# Can be edited, but DON'T REMOVE THE REPLACEMENT FIELDS (words surrounded by {curly braces})
+# Current localization is Hebrew
 
-# Conversation: the start command was sent and the bot should welcome the user
-conversation_after_start = "! היי וברוך הבא \n" \
-                           "הלקוחות שלנו חשובים לנו ונשמח לעמוד לרשותכם לכל עת בעמוד הבית"
+# Currency symbol
+currency_symbol = "₪"
 
-# Conversation: to send an inline keyboard you need to send a message with it
-conversation_open_user_menu = "היי וברוך הבא\n" \
-                              "💰 <b>{credit}</b> :  כמה כסף יש לי בארנק\n" \
-                              "\n" \
-                              "<i>לחץ על הכפתור שבתפריט כדי לבחור שירות\n" \
-                              "אם המקלדת נפתחה, לחץ על ארבעת הריבועים הקטנים" \
-                              "בשורת הטקסט</i>"
+# Positioning of the currency symbol
+currency_format_string = "{value} {symbol}"
 
-# Conversation: like above, but for administrators
-conversation_open_admin_menu = "אתה המנהל של החנות הזו <b>Manager</b>!\n" \
-                               "?מה ברצונך לעשות\n" \
-                               "\n" \
-                               "<i>לחץ על הכפתור הרלוונטי כדי לבחור אפשרות מהתפריט\n" \
-                               "אם המקלדת נפתחת, תוכל לפתוח את התפריט על ידי לחיצה על האייקון " \
-                               " עם ארבעת העיגולים הקטנים בשורת ההקלדה</i>"
+# Quantity of a product in stock
+in_stock_format_string = "{quantity} במלאי"
 
-# Conversation: select a payment method
-conversation_payment_method = "?איך תרצה לטעון כסף לחשבונך"
+# Copies of a product in cart
+in_cart_format_string = "{quantity} בעגלה"
 
-# Conversation: select a product to edit
-conversation_admin_select_product = "✏️ איזה מוצרים תרצה לערוך"
+# Product information
+product_format_string = "<b>{name}</b>\n" \
+                        "{description}\n" \
+                        "{price}\n" \
+                        "<b>{cart}</b>"
 
-# Conversation: select a product to delete
-conversation_admin_select_product_to_delete = "❌ איזה מוצרים תרצה למחוק"
+# Order number, displayed in the order info
+order_number = "הזמנה מס' #{id}"
 
-# Conversation: select a user to edit
-conversation_admin_select_user = "בחר איזה משתמש תרצה לערוך"
+# Order info string, shown to the admins
+order_format_string = "על ידי {user}\n" \
+                      "נוצר ב-{date}\n" \
+                      "\n" \
+                      "{items}\n" \
+                      "סה\"כ: <b>{value}</b>\n" \
+                      "\n" \
+                      "הערות הלקוח: {notes}\n"
 
-# Conversation: click below to pay for the purchase
-conversation_cart_actions = "<i>תוכל להוסיף מוצרים לעגלת הקניות בלחיצה על כפתור הוסף" \
-                            " כשסיימת להוסיף את כל הפריטים תוכל לחזור להודעה זאת" \
-                            " ולחץ כל כפתור בוצע לסיום</i>"
+# Order info string, shown to the user
+user_order_format_string = "{status_emoji} <b>הזמנה {status_text}</b>\n" \
+                           "{items}\n" \
+                           "סה\"כ: <b>{value}</b>\n" \
+                           "\n" \
+                           "הערות: {notes}\n"
 
-# Conversation: confirm the cart contents
-conversation_confirm_cart = "🛒 העגלה שלך מכילה את הפריטים הבאים\n" \
-                            "{product_list}" \
-                            "<b>{total_cost}</b> :סך הכל\n" \
-                            "\n" \
-                            "<i>אם אתה מעוניין להמשיך, לחץ על הכפתור סיום\n" \
-                            "לביטול, לחץ על מנת לבטל עסקה</i>"
+# Transaction page is loading
+loading_transactions = "<i>טוען עסקאות...\n" \
+                       "אנא המתן מספר שניות.</i>"
 
-# Conversation: the user activated the live orders mode
-conversation_live_orders_start = "אתה כעת במצב עריכה לייב <b>Live Orders</b>\n" \
-                                 "כל ההזמנות החדשות שנוצרות על ידי קונים יוצגו כאן בזמן אמת" \
-                                 " ואתה תוכל לסמן אותם כבוצעו בהצלחה ✅" \
-                                 " ✴️ או לבחור להחזיר את הכסף ללקוחות\n" \
-                                 "\n" \
-                                 "<i>לחץ על כפתור עצור בתפריט כדי לעצור את" \
-                                 " הטעינה</i>"
+# Transactions page
+transactions_page = "עמוד <b>{page}</b>:\n" \
+                    "\n" \
+                    "{transactions}"
 
-# Conversation: help menu has been opened
-conversation_open_help_menu = " ?היי, איזה עזרה אתה צריך"
+# מצב הזמנות חיות: התחלה
+conversation_live_orders_start = "אתה במצב <b>הזמנות חיות</b>!\n" \
+                                 "כל ההזמנות החדשות שיבוצעו על ידי לקוחות יופיעו בזמן אמת בצ'אט זה, ותוכל לסמן אותן כ-✅ הושלמו" \
+                                 " או ✴️ להחזיר את הכסף ללקוח."
 
-# Conversation: confirm promotion to admin
-conversation_confirm_admin_promotion = "?האם אתה בטוח שברצונך לקדם משתמש זה להיות מנהל\n" \
-                                       "לא תוכל לבטל פעולה זו!"
+# מצב הזמנות חיות: הפסקת קבלת הודעות
+conversation_live_orders_stop = "<i>לחץ על כפתור העצירה מתחת להודעה זו כדי להפסיק לקבל הזמנות חיות.</i>"
 
-# Conversation: language select menu header
+# שיחה: תפריט העזרה נפתח
+conversation_open_help_menu = "איזה סוג של עזרה אתה צריך?"
+
+# שיחה: אישור קידום למנהל
+conversation_confirm_admin_promotion = "האם אתה בטוח שאתה רוצה לקדם משתמש זה ל-💼 מנהל?\n" \
+                                       "זוהי פעולה בלתי הפיכה!"
+
+# שיחה: כותרת תפריט בחירת שפה
 conversation_language_select = "בחר שפה:"
 
-# Conversation: switching to user mode
-conversation_switch_to_user_mode = " כעת תעבור למצב שמדמה קונה בחנות.\n" \
-                                   "/start אם תרצה לחזור בכל זמן לחזור לפאל הניהול, לחץ על"
+# שיחה: מעבר למצב משתמש
+conversation_switch_to_user_mode = "אתה עובר למצב 👤 לקוח.\n" \
+                                   "אם ברצונך לחזור למצב 💼 מנהל, אתחל את השיחה עם /start."
 
-# Notification: the conversation has expired
-conversation_expired = "🕐 המערכת זיהתה שלא הייתה שום פעילות כבר זמן ממושך. לכן המערכת מושהית" \
-                       " כדי לחסוך במשאבים\n" \
-                       "/start כדי להתחיל מחדש פשוט לחצו על"
+# התראה: השיחה פגה
+conversation_expired = "🕐 לא קיבלתי הודעות זמן מה, אז סגרתי את השיחה כדי לחסוך באנרגיה.\n" \
+                       "אם ברצונך להתחיל חדשה, שלח שוב את הפקודה /start."
 
-# User menu: order
-menu_order = "🛒 רשימת פריטים"
+# תפריט משתמש: הזמנה
+menu_order = "🛒 הזמן"
 
-# User menu: order status
+# תפריט משתמש: סטטוס הזמנה
 menu_order_status = "🛍 ההזמנות שלי"
 
-# User menu: add credit
-menu_add_credit = "💵 טעינת כסף בחשבון"
+# תפריט משתמש: הוסף אשראי
+menu_add_credit = "💵 הוסף כספים"
 
-# User menu: bot info
-menu_bot_info = "ℹ ️מידע על הבוט"
+# תפריט משתמש: מידע על הבוט
+menu_bot_info = "ℹ️ מידע על הבוט"
 
-# User menu: cash
-menu_cash = "💵 במזומן"
+# תפריט משתמש: מזומן
+menu_cash = "💵 מזומן"
 
-# User menu: credit card
-menu_credit_card = "💳 בכרטיס אשראי"
+# תפריט משתמש: כרטיס אשראי
+menu_credit_card = "💳 כרטיס אשראי"
 
-# Admin menu: products
+# תפריט מנהל: מוצרים
 menu_products = "📝️ מוצרים"
 
-# Admin menu: orders
+# תפריט מנהל: הזמנות
 menu_orders = "📦 הזמנות"
 
-# Menu: transactions
-menu_transactions = "💳 רשימת כל העסקאות"
+# תפריט: עסקאות
+menu_transactions = "💳 רשימת עסקאות"
 
-# Menu: edit credit
-menu_edit_credit = "💰 יצירת עסקה"
+# תפריט: ערוך אשראי
+menu_edit_credit = "💰 צור עסקה"
 
-# Admin menu: go to user mode
-menu_user_mode = "👤 החלף למצב מדמה משתמש"
+# תפריט מנהל: עבור למצב משתמש
+menu_user_mode = "👤 עבור למצב לקוח"
 
-# Admin menu: add product
-menu_add_product = "✨ הוספת מוצר חדש"
+# תפריט מנהל: הוסף מוצר
+menu_add_product = "✨ מוצר חדש"
 
-# Admin menu: delete product
-menu_delete_product = "❌ מחיקת מוצר קיים"
+# תפריט מנהל: מחק מוצר
+menu_delete_product = "❌ מחק מוצר"
 
-# Menu: cancel
-menu_cancel = "🔙 ביטול"
+# תפריט: ביטול
+menu_cancel = "🔙 בטל"
 
-# Menu: skip
+# תפריט: חזור
+menu_go_back = "🔙 חזור"
+
+# תפריט: דלג
 menu_skip = "⏭ דלג"
 
-# Menu: done
-menu_done = "✅️ בוצע"
+# תפריט: סיום
+menu_done = "✅️ סיום"
 
-# Menu: pay invoice
-menu_pay = "💳 תשלום"
+# תפריט: שלם חשבונית
+menu_pay = "💳 שלם"
 
-# Menu: complete
-menu_complete = "✅ בוצע"
+# תפריט: השלם
+menu_complete = "✅ השלם"
 
-# Menu: refund
-menu_refund = "✴️ החזר כספי"
+# תפריט: החזר כספים
+menu_refund = "✴️ החזר כספים"
 
-# Menu: stop
+# תפריט: עצור
 menu_stop = "🛑 עצור"
 
-# Menu: add to cart
+# תפריט: הוסף לעגלה
 menu_add_to_cart = "➕ הוסף"
 
-# Menu: remove from cart
-menu_remove_from_cart = "➖ מחק"
+# תפריט: הסר מהעגלה
+menu_remove_from_cart = "➖ הסר"
 
-# Menu: help menu
-menu_help = "❓ עזרה/תמיכה"
+# תפריט: תפריט עזרה
+menu_help = "❓ עזרה ותמיכה"
 
-# Menu: guide
+# תפריט: מדריך
 menu_guide = "📖 מדריך"
 
-# Menu: next page
+# תפריט: עמוד הבא
 menu_next = "▶️ הבא"
 
-# Menu: previous page
+# תפריט: עמוד קודם
 menu_previous = "◀️ הקודם"
 
-# Menu: contact the shopkeeper
-menu_contact_shopkeeper = "👨‍ 💼 צור קשר עם החנות"
+# תפריט: צור קשר עם המוכר
+menu_contact_shopkeeper = "👨‍💼 צור קשר עם החנות"
 
-# Menu: generate transactions .csv file
+# תפריט: צור קובץ .csv של עסקאות
 menu_csv = "📄 .csv"
 
-# Menu: edit admins list
-menu_edit_admins = "🏵 עריכת מנהלים"
+# תפריט: ערוך רשימת מנהלים
+menu_edit_admins = "🏵 ערוך מנהלים"
 
-# Menu: language
-menu_language = "🇮🇱 שפות נוספות"
+# תפריט: שפה
+menu_language = "🇮🇱 שפה"
 
-# Emoji: unprocessed order
+# אימוג'י: הזמנה לא מעובדת
 emoji_not_processed = "*️⃣"
 
-# Emoji: completed order
+# אימוג'י: הזמנה הושלמה
 emoji_completed = "✅"
 
-# Emoji: refunded order
+# אימוג'י: הזמנה הוחזרה
 emoji_refunded = "✴️"
 
-# Emoji: yes
+# אימוג'י: כן
 emoji_yes = "✅"
 
-# Emoji: no
+# אימוג'י: לא
 emoji_no = "🚫"
 
-# Text: unprocessed order
-text_not_processed = "מושהה"
+# טקסט: הזמנה לא מעובדת
+text_not_processed = "ממתין"
 
-# Text: completed order
-text_completed = "הסתיים"
+# טקסט: הזמנה הושלמה
+text_completed = "הושלם"
 
-# Text: refunded order
-text_refunded = "כסף הוחזר"
+# טקסט: הזמנה הוחזרה
+text_refunded = "הוחזר"
 
-# Text: product not for sale
-text_not_for_sale = "לא למכירה"
+# הוסף מוצר: קטגוריה?
+ask_product_category = "מה צריכה להיות הקטגוריה של המוצר?"
 
-# Add product: name?
-ask_product_name = "איזה שם תרצה לתת למוצר?"
+# הוסף מוצר: שם?
+ask_product_name = "מה צריך להיות השם של המוצר?"
 
-# Add product: description?
-ask_product_description = "איזה תיאור תרצה לתת למוצר?"
+# הוסף מוצר: תיאור?
+ask_product_description = "מה צריך להיות התיאור של המוצר?"
 
-# Add product: price?
-ask_product_price = "מה מחיר המוצר?\n" \
-                    "אם ברצונך לדגם על שלב זה כעת <code>X</code> אנא הקלד"
+# הוסף מוצר: מחיר?
+ask_product_price = "מה צריך להיות המחיר של המוצר?\n" \
+                    "הקלד <code>X</code> אם אתה רוצה שהמוצר לא יהיה למכירה עדיין."
 
-# Add product: image?
-ask_product_image = "🖼 איזה תמונה לתת למוצר?\n" \
+# הוסף מוצר: טקסט "לא למכירה עדיין"
+not_for_sale_yet = "לא למכירה עדיין"
+
+# הוסף מוצר: תמונה?
+ask_product_image = "🖼 איזו תמונה אתה רוצה שתהיה למוצר?\n" \
                     "\n" \
-                    "<i>העלה תמונה, או דלג על שלב זה כעת על ידי לחיצה על כפתור דלג</i>"
+                    "<i>שלח תמונה, או אם אתה מעדיף להשאיר את המוצר ללא תמונה, לחץ על כפתור הדילוג למטה.</i>"
 
-# Order product: notes?
-ask_order_notes = "?תרצה להשאיר הודעה לחנות\n" \
-                  "💼 כך מנהלי החנות יוכלו לקרוא אותה לפני המשלוח\n" \
+# הוסף קטגוריה: שם?
+ask_category_name = "מה צריך להיות השם של הקטגוריה?"
+
+# הזמן מוצר: הערות?
+ask_order_notes = "האם תרצה להשאיר הערה יחד עם ההזמנה?\n" \
+                  "💼 זה יהיה גלוי למנהלי החנות.\n" \
                   "\n" \
-                  "<i>הקלד את ההודעה שתרצה להשאיר, או לחץ על דלג" \
-                  " כדי לא להשאיר הודעה כלל</i>"
+                  "<i>שלח הודעה עם ההערה שברצונך להשאיר, או לחץ על כפתור הדילוג מתחת להודעה זו כדי לא להשאיר כלום.</i>"
 
-# Refund product: reason?
-ask_refund_reason = " מה הסיבה להחזר הכסף\n" \
-                    "👤  המשתמש יוכל לראות זאת"
+# החזר כספים עבור מוצר: סיבה?
+ask_refund_reason = "צרף סיבה להחזר כספים זה.\n" \
+                    "👤 זה יהיה גלוי ללקוח."
 
-# Edit credit: notes?
-ask_transaction_notes = " הוסף הערה לעסקא זו\n" \
-                        "👤 זה יוצג משתמש לאחר שהוא יטעי כסף לחשבונו" \
-                        " ולמנהלים ברשימת העסקאות."
+# ערוך אשראי: הערות?
+ask_transaction_notes = "צרף הערה לעסקה זו.\n" \
+                        "👤 זה יהיה גלוי ללקוח לאחר הזיכוי/חיוב" \
+                        " ול-💼 מנהלים ביומן העסקאות."
 
-# Edit credit: amount?
-ask_credit = "איך תרצה לשנות את הסכום הטעון בחשבון הלקוח?\n" \
+# ערוך אשראי: סכום?
+ask_credit = "בכמה אתה רוצה לשנות את האשראי של הלקוח?\n" \
              "\n" \
-             "<i>שלח הודעה עם הסכום שתרצה להעיק לו\n" \
-             " </i><code>+</code><i> השתמש בסימן הבא כדי להוסיף כסף לחשבונו" \
-             " כדי להוריד סכום מחשבונו </i><code>-</code><i> והשתמש בסימן</i>"
+             "<i>שלח הודעה המכילה את הסכום.\n" \
+             "השתמש בסימן </i><code>+</code><i> כדי להוסיף אשראי לחשבון הלקוח," \
+             " או בסימן </i><code>-</code><i> כדי להפחית ממנו.</i>"
 
-# Header for the edit admin message
-admin_properties = "<b>הרשאות של {name}:</b>"
+# כותרת להודעת עריכת מנהל
+admin_properties = "<b>הרשאות עבור {name}:</b>"
 
-# Edit admin: can edit products?
-prop_edit_products = "עריכת פריטים"
+# ערוך מנהל: יכול לערוך מוצרים?
+prop_edit_products = "ערוך מוצרים"
 
-# Edit admin: can receive orders?
-prop_receive_orders = "קבלת הזמנות"
+# ערוך מנהל: יכול לערוך קטגוריות?
+prop_edit_categories = "ערוך קטגוריות"
 
-# Edit admin: can create transactions?
-prop_create_transactions = "ניהול עסקאות"
+# ערוך מנהל: יכול לקבל הזמנות?
+prop_receive_orders = "קבל הזמנות"
 
-# Edit admin: show on help message?
-prop_display_on_help = "הצגללקוח"
+# ערוך מנהל: יכול ליצור עסקאות?
+prop_create_transactions = "נהל עסקאות"
 
-# Thread has started downloading an image and might be unresponsive
-downloading_image = "אני מוריד את התמונה כעת!\n" \
-                    "זה יכול לקחת קצת זמן... אנא המתן בסבלנות!\n" \
-                    "אני לא אוכל לענות לך בזמן שאני טוען את התמונה"
+# ערוך מנהל: להציג בהודעת העזרה?
+prop_display_on_help = "תמיכת לקוחות"
 
-# Edit product: current value
-edit_current_value = "המחיר כרגע הוא\n" \
+# התהליך החל להוריד תמונה ועשוי להיות לא מגיב
+downloading_image = "אני מוריד את התמונה שלך!\n" \
+                    "זה עשוי לקחת זמן מה... אנא התאזר בסבלנות!\n" \
+                    "לא אוכל לענות לך במהלך ההורדה."
+
+# ערוך מוצר: ערך נוכחי
+edit_current_value = "הערך הנוכחי הוא:\n" \
                      "<pre>{value}</pre>\n" \
                      "\n" \
-                     "<i>לחץ על כפתור דלג אם ברצונך לשמור על ערך זה</i>"
+                     "<i>לחץ על כפתור הדילוג מתחת להודעה זו כדי לשמור על אותו ערך.</i>"
 
-# Payment: cash payment info
-payment_cash = "תוכל לשלם במזומן בחנות עצמה\n" \
-               "תשלום בקופה ונא העבר זאת למנהל\n" \
+# תשלום: מידע על תשלום במזומן
+payment_cash = "אתה יכול לשלם במזומן בחנות הפיזית.\n" \
+               "שלם בקופה, ותן למנהל החנות את המזהה הזה:\n" \
                "<b>{user_cash_id}</b>"
 
-# Payment: invoice amount
-payment_cc_amount = "?איזה סכום תרצה להוסיף לחשבונך\n" \
+# תפריט משתמש: היסטוריית אשראי
+menu_credit_history = "📈 היסטוריית אשראי"
+
+# תפריט משתמש: הכנס קוד קידום מכירות
+menu_promocode = "🤩 הכנס קוד קידום מכירות"
+
+# בקש קוד קידום מכירות
+ask_promocode = "הכנס את קוד קידום המכירות:"
+
+# קוד קידום מכירות הוחל בהצלחה
+promocode_applied = "קוד קידום מכירות הוחל!"
+
+# קוד קידום מכירות לא תקין
+promocode_invalid = "קוד קידום מכירות לא תקין."
+
+# תפריט משתמש: פרופיל
+menu_profile = "🧾 פרופיל"
+
+# היסטוריית האשראי ריקה
+credit_history_null = "עדיין לא ביצעת טעינות!"
+
+# היסטוריית אשראי
+credit_history = "היסטוריית הטעינות שלך:"
+
+# תשלום: סכום כרטיס אשראי
+payment_cc_amount = "כמה כסף אתה רוצה להוסיף לארנק שלך?\n" \
                     "\n" \
-                    "<i>בחר סכום מהרשימה, או לחלופין הקלד את הסכום שתרצה לטעון</i>"
+                    "<i>בחר סכום באמצעות הכפתורים למטה, או הזן אותו ידנית באמצעות המקלדת הרגילה.</i>"
 
-# Payment: add funds invoice title
-payment_invoice_title = "טעינת כספים"
+# תשלום: כותרת חשבונית להוספת כספים
+payment_invoice_title = "הוספת כספים"
 
-# Payment: add funds invoice description
-payment_invoice_description = " {amount}: תשלום על חשבון זה יוסיף את הסכום הבא לחשבונך "
+# תשלום: תיאור חשבונית להוספת כספים
+payment_invoice_description = "תשלום חשבונית זו יוסיף {amount} לארנק שלך."
 
-# Payment: label of the labeled price on the invoice
-payment_invoice_label = "מעדכן"
+# תשלום: תווית המחיר המתויג בחשבונית
+payment_invoice_label = "טעינה"
 
-# Payment: label of the labeled price on the invoice
-payment_invoice_fee_label = "עמלת העברה"
+# תשלום: תווית העמלה בחשבונית
+payment_invoice_fee_label = "עמלת כרטיס"
 
-# Notification: order has been placed
-notification_order_placed = "נוצרה הזמנה חדשה:\n" \
-                            "\n" \
+# התראה: הזמנה בוצעה
+notification_order_placed = "התקבלה הזמנה חדשה:\n" \
                             "{order}"
 
-# Notification: order has been completed
-notification_order_completed = "ההזמנה הוצרה בהצלחה\n" \
-                               "\n" \
+# התראה: הזמנה הושלמה
+notification_order_completed = "ההזמנה שלך הושלמה!\n" \
                                "{order}"
 
-# Notification: order has been refunded
-notification_order_refunded = "הכסף על ההזמנה הבא הוחזר בהצלחה\n" \
-                              "\n" \
+# התראה: הזמנה הוחזרה
+notification_order_refunded = "ההזמנה שלך הוחזרה!\n" \
                               "{order}"
 
-# Notification: a manual transaction was applied
-notification_transaction_created = "ℹ️  עסקא חדשה קושרה לחשבונך\n" \
+# התראה: עסקה ידנית הוחלה
+notification_transaction_created = "ℹ️ עסקה חדשה הוחלה על הארנק שלך:\n" \
                                    "{transaction}"
 
-# Refund reason
-refund_reason = ":סיבה להחזר כספי\n" \
+# סיבת החזר כספים
+refund_reason = "סיבת החזר הכספים:\n" \
                 "{reason}"
 
-# Info: informazioni sul bot
-bot_info = 'This bot is using <a href="https://github.com/Steffo99/greed">greed</a>,' \
-           ' a framework by @Steffo for Telegram payments released under the' \
+# מידע: מידע על הבוט
+bot_info = 'בוט זה משתמש ב-<a href="https://github.com/Steffo99/greed">greed</a>,' \
+           ' מסגרת עבודה על ידי @Steffo לתשלומים בטלגרם שפורסמה תחת' \
            ' <a href="https://github.com/Steffo99/greed/blob/master/LICENSE.txt">' \
            'Affero General Public License 3.0</a>.\n'
 
-# Help: guide
-help_msg = "greed's guide is available at this address:\n" \
-           "https://github.com/Steffo99/greed/wiki"
+# עזרה: מדריך
+help_msg = "מדריך לשימוש בבוט זה זמין בכתובת הבאה:\n" \
+           "https://docs.google.com/document/d/1f4MKVr0B7RSQfWTSa_6ZO0LM4nPpky_GX_qdls3EHtQ/"
 
-# Help: contact shopkeeper
-contact_shopkeeper = "המשתמשים שיכולים לספק תמיכה הם\n" \
+# עזרה: צור קשר עם המוכר
+contact_shopkeeper = "הצוות הזמין כרגע לספק סיוע למשתמשים מורכב מ:\n" \
                      "{shopkeepers}\n" \
-                     "<i>לחץ על אחד השמות כדי ליצור עימם קשר בצאט פרטי</i>"
+                     "<i>לחץ / הקש על אחד השמות שלהם כדי ליצור איתם קשר בצ'אט טלגרם.</i>"
 
-# Success: product has been added/edited to the database
-success_product_edited = "✅ מוצר זה השתנה בהצלחה!"
+# הצלחה: המוצר נוסף/נערך במסד הנתונים
+success_product_edited = "✅ המוצר נוסף/שונה בהצלחה!"
 
-# Success: product has been marked as deleted in the database
-success_product_deleted = "✅ מוצר זה נמחק בהצלחה"
+# הצלחה: המוצר נמחק מהמסד הנתונים
+success_product_deleted = "✅ המוצר נמחק בהצלחה!"
 
-# Success: order has been created
-success_order_created = "✅ ההזמנה נשלחה בהצלחה\n" \
+# הצלחה: ההזמנה נוצרה
+success_order_created = "✅ ההזמנה נשלחה בהצלחה!\n" \
                         "\n" \
                         "{order}"
 
-# Success: order was marked as completed
-success_order_completed = "✅ #{order_id} סימנת את העסקא הבאה כבוצעה בהצלחה"
+# הצלחה: ההזמנה סומנה כהושלמה
+success_order_completed = "✅ סימנת את ההזמנה #{order_id} כהושלמה."
 
-# Success: order was refunded successfully
-success_order_refunded = "✴️ #{order_id}: בוצע החזר כספי לעסקה"
+# הצלחה: ההזמנה הוחזרה בהצלחה
+success_order_refunded = "✴️ ההזמנה #{order_id} הוחזרה בהצלחה."
 
-# Success: transaction was created successfully
-success_transaction_created = "✅ העסקה נוצרה בהצלחה\n" \
+# הצלחה: העסקה נוצרה בהצלחה
+success_transaction_created = "✅ העסקה נוצרה בהצלחה!\n" \
                               "{transaction}"
 
-# Error: message received not in a private chat
-error_nonprivate_chat = "⚠️ הבוט עובד רק בצאט פרטי"
+# שגיאה: התקבלה הודעה שלא בצ'אט פרטי
+error_nonprivate_chat = "⚠️ בוט זה עובד רק בצ'אטים פרטיים."
 
-# Error: a message was sent in a chat, but no worker exists for that chat.
-# Suggest the creation of a new worker with /start
-error_no_worker_for_chat = "⚠️ הפעילות עם הבוט הופסקה\n" \
-                           "/start על מנת לחדש אותה, לחץ על"
+# שגיאה: נשלחה הודעה בצ'אט, אבל אין עובד קיים עבור צ'אט זה.
+# מציע יצירת עובד חדש עם /start
+error_no_worker_for_chat = "⚠️ השיחה עם הבוט הופרעה.\n" \
+                           "כדי להתחיל מחדש, שלח את הפקודה /start לבוט."
 
-# Error: add funds amount over max
-error_payment_amount_over_max = "⚠️ הסכום המקסימלי האפשרי להוסיף לעסקה אחת הוא {max_amount}."
+# שגיאה: נשלחה הודעה בצ'אט, אבל העובד עבור צ'אט זה אינו מוכן.
+error_worker_not_ready = "🕒 השיחה עם הבוט מתחילה כעת.\n" \
+                         "אנא המתן מספר רגעים לפני שליחת פקודות נוספות!"
 
-# Error: add funds amount under min
-error_payment_amount_under_min = "⚠️ הסכום המינימלי האפשרי להוסיף לעסקה אחת הוא {min_amount}."
+# שגיאה: סכום הוספת כספים מעל המקסימום
+error_payment_amount_over_max = "⚠️ הסכום המרבי שניתן להוסיף בעסקה אחת הוא {max_amount}."
 
-# Error: the invoice has expired and can't be paid
-error_invoice_expired = "⚠️ החשבונית הזאת בוטלה , ולא ניתן להתשמש בה יותר. כדי לטעון כספים " \
-                        " נא השתמש באפשרות טעינת הכספים מהתפריט הראשי"
+# שגיאה: סכום הוספת כספים מתחת למינימום
+error_payment_amount_under_min = "⚠️ הסכום המינימלי שניתן להוסיף בעסקה אחת הוא {min_amount}."
 
-# Error: a product with that name already exists
-error_duplicate_name = "️⚠️ קיים בחנות מוצר בעל שם זהה"
+# שגיאה: החשבונית פגה תוקף ולא ניתן לשלם אותה
+error_invoice_expired = "⚠️ חשבונית זו פגה ובוטלה. אם אתה עדיין רוצה להוסיף כספים, השתמש באפשרות הוספת כספים בתפריט."
 
-# Error: not enough credit to order
-error_not_enough_credit = "⚠️ אין לך מספיק כסף בארנק כדי לבצע את העסקה"
+# שגיאה: כבר קיים מוצר עם שם זה
+error_duplicate_name = "️⚠️ כבר קיים מוצר עם אותו שם."
 
-# Error: order has already been cleared
-error_order_already_cleared = "⚠️  ההזמנה הזאתי כבר בוצעה"
+# שגיאה: אין מספיק אשראי להזמנה
+error_not_enough_credit = "⚠️ אין לך מספיק אשראי לביצוע ההזמנה."
 
-# Error: no orders have been placed, so none can be shown
-error_no_orders = "⚠️  לא ביצעת עדיין הזמנה, אז אין מה להציג"
+# שגיאה: ההזמנה כבר עובדה
+error_order_already_cleared = "⚠️ הזמנה זו כבר עובדה."
 
-# Error: selected user does not exist
-error_user_does_not_exist = "⚠️  משתמש כזה לא קיים"
+# שגיאה: לא בוצעו הזמנות, כך שאין מה להציג
+error_no_orders = "⚠️ עדיין לא ביצעת הזמנות, כך שאין מה להציג."
 
-# Fatal: conversation raised an exception
-fatal_conversation_exception = "☢️ באג גרם לקריסה An <b>error</b> הו לא\n" \
-                               "הבאג דווח למנהל כדי שיוכל לטפל בבעיות אלה בעתיד\n" \
-                               "/start על מנת לחדש את השיחה עם הבוט, אנא לחץ על"
+# שגיאה: המשתמש שנבחר אינו קיים
+error_user_does_not_exist = "⚠️ המשתמש שנבחר אינו קיים."
+
+# קריטי: השיחה העלתה חריגה
+fatal_conversation_exception = "☢️ אוי לא! <b>שגיאה</b> הפריעה לשיחה זו.\n" \
+                               "השגיאה דווחה לבעל הבוט כדי שיוכל לתקן אותה.\n" \
+                               "כדי להתחיל שיחה חדשה, שלח שוב את הפקודה /start."

@@ -3,6 +3,7 @@ import os, sys
 import threading
 
 import sqlalchemy
+from sqlalchemy.ext.asyncio import create_async_engine
 import sqlalchemy.ext.declarative as sed
 import telegram
 
@@ -11,6 +12,7 @@ import duckbot
 import localization
 import nuconfig
 import worker
+from worker import Worker, CancelSignal
 
 from blockonomics import BlockonomicsPoll
 
@@ -18,6 +20,26 @@ try:
     import coloredlogs
 except ImportError:
     coloredlogs = None
+
+
+def handle_start_command(bot, chat_id, start_parameter, chat_workers=None):
+    # Знайдіть відповідного робітника
+    worker = chat_workers
+    if worker:
+        # Застосуйте промокод
+        worker.queue.put(("apply_promocode", start_parameter))
+    else:
+        # Якщо робітника немає, створіть нового
+        new_worker = Worker(bot=bot,
+                            chat=bot.get_chat(chat_id),
+                            telegram_user=bot.get_chat_member(chat_id, chat_id).user,
+                            cfg=user_cfg,
+                            engine=engine,
+                            daemon=True)
+        new_worker.start()
+        chat_workers[chat_id] = new_worker
+        # Застосуйте промокод
+        new_worker.queue.put(("apply_promocode", start_parameter))
 
 
 def main():
@@ -140,28 +162,53 @@ def main():
                     # Skip the update
                     continue
                 # If the message is a start command...
-                if isinstance(update.message.text, str) and update.message.text.startswith("/start"):
-                    log.info(f"Received /start from: {update.message.chat.id}")
-                    # Check if a worker already exists for that chat
-                    old_worker = chat_workers.get(update.message.chat.id)
-                    # If it exists, gracefully stop the worker
-                    if old_worker:
-                        log.debug(f"Received request to stop {old_worker.name}")
-                        old_worker.stop("request")
-                    # Initialize a new worker for the chat
-                    new_worker = worker.Worker(bot=bot,
-                                               chat=update.message.chat,
-                                               telegram_user=update.message.from_user,
-                                               cfg=user_cfg,
-                                               engine=engine,
-                                               daemon=True)
-                    # Start the worker
-                    log.debug(f"Starting {new_worker.name}")
-                    new_worker.start()
-                    # Store the worker in the dictionary
-                    chat_workers[update.message.chat.id] = new_worker
-                    # Skip the update
-                    continue
+                elif isinstance(update.message.text, str) and update.message.text.startswith("/start"):
+                    parts = update.message.text.split()
+                    if len(parts) > 1:
+                        # Це глибоке посилання з промокодом
+                        log.info(f"Received /start from: {update.message.chat.id}")
+                        # Check if a worker already exists for that chat
+                        old_worker = chat_workers.get(update.message.chat.id)
+                        # If it exists, gracefully stop the worker
+                        if old_worker:
+                            log.debug(f"Received request to stop {old_worker.name}")
+                            old_worker.stop("request")
+                        # Initialize a new worker for the chat
+                        new_worker = worker.Worker(bot=bot,
+                                                   chat=update.message.chat,
+                                                   telegram_user=update.message.from_user,
+                                                   cfg=user_cfg,
+                                                   engine=engine,
+                                                   daemon=True)
+                        # Start the worker
+                        log.debug(f"Starting {new_worker.name}")
+                        new_worker.start()
+                        # Store the worker in the dictionary
+                        chat_workers[update.message.chat.id] = new_worker
+                        # Skip the update
+                        handle_start_command(bot, update.message.chat.id, parts[1], new_worker)
+                    else:
+                        log.info(f"Received /start from: {update.message.chat.id}")
+                        # Check if a worker already exists for that chat
+                        old_worker = chat_workers.get(update.message.chat.id)
+                        # If it exists, gracefully stop the worker
+                        if old_worker:
+                            log.debug(f"Received request to stop {old_worker.name}")
+                            old_worker.stop("request")
+                        # Initialize a new worker for the chat
+                        new_worker = worker.Worker(bot=bot,
+                                                   chat=update.message.chat,
+                                                   telegram_user=update.message.from_user,
+                                                   cfg=user_cfg,
+                                                   engine=engine,
+                                                   daemon=True)
+                        # Start the worker
+                        log.debug(f"Starting {new_worker.name}")
+                        new_worker.start()
+                        # Store the worker in the dictionary
+                        chat_workers[update.message.chat.id] = new_worker
+                        # Skip the update
+                        continue
                 # Otherwise, forward the update to the corresponding worker
                 receiving_worker = chat_workers.get(update.message.chat.id)
                 # Ensure a worker exists for the chat and is alive
@@ -174,10 +221,11 @@ def main():
                     continue
                 # If the worker is not ready...
                 if not receiving_worker.is_ready():
-                    log.debug(f"Received a message in a chat where the worker wasn't ready yet: {update.message.chat.id}")
+                    log.debug(
+                        f"Received a message in a chat where the worker wasn't ready yet: {update.message.chat.id}")
                     # Suggest that the user restarts the chat with /start
-                    bot.send_message(update.message.chat.id, default_loc.get("error_worker_not_ready"),
-                                     reply_markup=telegram.ReplyKeyboardRemove())
+                    # bot.send_message(update.message.chat.id, default_loc.get("error_worker_not_ready"),
+                    #                reply_markup=telegram.ReplyKeyboardRemove())
                     # Skip the update
                     continue
                 # If the message contains the "Cancel" string defined in the strings file...
@@ -220,7 +268,8 @@ def main():
                 if receiving_worker is None or \
                         update.pre_checkout_query.invoice_payload != receiving_worker.invoice_payload:
                     # Notify the user that the invoice has expired
-                    log.debug(f"Received a pre-checkout query for an expired invoice in: {update.pre_checkout_query.from_user.id}")
+                    log.debug(
+                        f"Received a pre-checkout query for an expired invoice in: {update.pre_checkout_query.from_user.id}")
                     try:
                         bot.answer_pre_checkout_query(update.pre_checkout_query.id,
                                                       ok=False,
@@ -240,6 +289,7 @@ def main():
         # Check for Transaction Updates
         log.debug(f"Checking for Transaction Updates from Blockonomics")
         BlockonomicsPoll(bot=bot, engine=engine).check_for_pending_transactions()
+
 
 # Run the main function only in the main process
 if __name__ == "__main__":

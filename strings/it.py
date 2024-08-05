@@ -1,5 +1,6 @@
 # Strings / localization file for greed
 # Can be edited, but DON'T REMOVE THE REPLACEMENT FIELDS (words surrounded by {curly braces})
+# Current localization is Italian
 
 # Currency symbol
 currency_symbol = "€"
@@ -172,6 +173,9 @@ menu_delete_product = "❌ Elimina prodotto"
 # Menu: cancel
 menu_cancel = "🔙 Annulla"
 
+# Menu: go back
+menu_go_back = "🔙 Ritornare"
+
 # Menu: skip
 menu_skip = "⏭ Salta"
 
@@ -244,8 +248,8 @@ text_completed = "completato"
 # Text: refunded order
 text_refunded = "rimborsato"
 
-# Text: product not for sale
-text_not_for_sale = "Non in vendita"
+# Add product: category?
+ask_product_category = "Quale deve essere la categoria del prodotto?"
 
 # Add product: name?
 ask_product_name = "Come si deve chiamare il prodotto?"
@@ -257,11 +261,17 @@ ask_product_description = "Quale deve essere la descrizione del prodotto?"
 ask_product_price = "Quanto deve costare il prodotto?\n" \
                     "Scrivi <code>X</code> se vuoi che il prodotto non sia ancora in vendita."
 
+# Add product: Not for sale yet (Non in vendita) text
+not_for_sale_yet = "Non in vendita"
+
 # Add product: image?
 ask_product_image = "🖼 Che immagine vuoi che abbia il prodotto?\n" \
                     "\n" \
                     "<i>Invia la foto, o se preferisci lasciare il prodotto senza immagine premi il tasto Salta qui" \
                     " sotto.</i>"
+
+# Add category: name?
+ask_category_name = "Quale deve essere il nome della categoria?"
 
 # Order product: notes?
 ask_order_notes = "Vuoi lasciare una nota insieme all'ordine?\n" \
@@ -292,6 +302,9 @@ admin_properties = "<b>Permessi di {name}:</b>"
 # Edit admin: can edit products?
 prop_edit_products = "Modifica prodotti"
 
+# Edit admin: can edit categories?
+prop_edit_categories = "Modifica categoria"
+
 # Edit admin: can receive orders?
 prop_receive_orders = "Ricevi ordini"
 
@@ -317,6 +330,23 @@ payment_cash = "Puoi pagare in contanti alla sede fisica del negozio.\n" \
                "Paga alla cassa, e fornisci al gestore del negozio questo id:\n" \
                "<b>{user_cash_id}</b>"
 
+menu_credit_history = "📈 Cronologia dei crediti"
+
+# User menu: menu promocode
+menu_promocode = "🤩 Inserisci il codice promozionale"
+
+ask_promocode = "Inserisci il codice promozionale:"
+
+promocode_applied = "Codice promozionale applicato!"
+
+promocode_invalid = "Codice promozionale non valido."
+
+menu_profile = "🧾 Profilo"
+
+credit_history_null = "Non hai ancora effettuato alcuna ricarica!"
+
+credit_history = "La cronologia delle tue ricariche:"
+
 # Payment: invoice amount
 payment_cc_amount = "Quanti fondi vuoi aggiungere al tuo portafoglio?\n" \
                     "\n" \
@@ -337,17 +367,14 @@ payment_invoice_fee_label = "Supplemento carta"
 
 # Notification: order has been placed
 notification_order_placed = "E' stato piazzato un nuovo ordine:\n" \
-                            "\n" \
                             "{order}"
 
 # Notification: order has been completed
 notification_order_completed = "Un tuo ordine è stato completato!\n" \
-                               "\n" \
                                "{order}"
 
 # Notification: order has been refunded
 notification_order_refunded = "Un tuo ordine è stato rimborsato!\n" \
-                              "\n" \
                               "{order}"
 
 # Notification: a manual transaction was applied
@@ -366,7 +393,7 @@ bot_info = 'Questo bot utilizza <a href="https://github.com/Steffo99/greed">gree
 
 # Help: guide
 help_msg = "La guida del bot è disponibile a questo indirizzo:\n" \
-           "https://github.com/Steffo99/greed/wiki"
+           "https://docs.google.com/document/d/1f4MKVr0B7RSQfWTSa_6ZO0LM4nPpky_GX_qdls3EHtQ/"
 
 # Help: contact shopkeeper
 contact_shopkeeper = "Attualmente, il personale disponibile ad offrire assistenza agli utenti è composto da:\n" \
@@ -376,7 +403,7 @@ contact_shopkeeper = "Attualmente, il personale disponibile ad offrire assistenz
 # Success: product has been added/edited to the database
 success_product_edited = "✅ Il prodotto è stato aggiunto/modificato con successo!"
 
-# Success: product has been marked as deleted in the database
+# Success: product has been added/edited to the database
 success_product_deleted = "✅ Il prodotto è stato eliminato con successo!"
 
 # Success: order has been created

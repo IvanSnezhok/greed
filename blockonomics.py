@@ -12,21 +12,22 @@ import database as db
 
 log = logging.getLogger(__name__)
 
+
 # Define all the database tables using the sqlalchemy declarative base
 class Blockonomics:
 
     @staticmethod
     def fetch_new_btc_price():
         url = 'https://www.blockonomics.co/api/price'
-        params = {'currency':configloader.user_cfg["Payments"]["currency"]}
-        r = requests.get(url,params)
+        params = {'currency': configloader.user_cfg["Payments"]["currency"]}
+        r = requests.get(url, params)
         if r.status_code == 200:
-          price = r.json()['price']
-          log.debug("BTC Price %s" % price)
-          return price
+            price = r.json()['price']
+            log.debug("BTC Price %s" % price)
+            return price
         else:
-          log.error("Fetch BTC Price Failed, Status: %s, Response: %s" % (r.status_code, r.content))
-    
+            log.error("Fetch BTC Price Failed, Status: %s, Response: %s" % (r.status_code, r.content))
+
     @staticmethod
     def _get_secret():
         return configloader.user_cfg["Bitcoin"]["secret"]
@@ -36,16 +37,18 @@ class Blockonomics:
         api_key = configloader.user_cfg["Bitcoin"]["api_key"]
         url = 'https://www.blockonomics.co/api/new_address'
         params = {}
-        if reset == True:
-          params['reset'] = 1
-        
+        if reset:
+            params['reset'] = 1
+
         headers = {'Authorization': "Bearer " + api_key}
         r = requests.post(url, headers=headers, params={**params, "match_callback": Blockonomics._get_secret()})
         if r.status_code == 200:
-          return r
+            return r
         else:
-          log.error("New Address Generation Failed, Status: %s, Response: %s" % (r.status_code, r.content), exc_info=False)
-          return r
+            log.error("New Address Generation Failed, Status: %s, Response: %s" % (r.status_code, r.content),
+                      exc_info=False)
+            return r
+
 
 class BlockonomicsPoll:
 
@@ -63,13 +66,13 @@ class BlockonomicsPoll:
         current_time = datetime.datetime.now()
         one_week_ago = current_time - datetime.timedelta(days=7)
 
-        pending_addresses = [o.address for o in self.session.query(db.BtcTransaction.address).\
-                             filter(db.BtcTransaction.status != 2,
-                                    db.BtcTransaction.timestamp > one_week_ago)]
+        pending_addresses = [o.address for o in self.session.query(db.BtcTransaction.address). \
+            filter(db.BtcTransaction.status != 2,
+                   db.BtcTransaction.timestamp > one_week_ago)]
         if not pending_addresses: return
 
         response = self._get_history_for_addresses(addresses=pending_addresses)
-        
+
         # Update Transactions for logs
         for transaction in response.get('logs', []):
             self.handle_update(
@@ -84,7 +87,7 @@ class BlockonomicsPoll:
 
         url = "https://www.blockonomics.co/api/merchant_logs"
         body = {"match_callback": Blockonomics._get_secret()}
-        headers = { "Authorization": "Bearer %s" % api_key }
+        headers = {"Authorization": "Bearer %s" % api_key}
 
         r = requests.get(
             url=url,
@@ -108,44 +111,45 @@ class BlockonomicsPoll:
                         'txid': query_params['txid'][0]
                     })
 
-    
             return formatted_data
         else:
-          log.error("Get Payments History failed, Status: %s, Response: %s" % (r.status_code, r.content))
-          return {"logs": []}
-
+            log.error("Get Payments History failed, Status: %s, Response: %s" % (r.status_code, r.content))
+            return {"logs": []}
 
     def _satoshi_to_fiat(self, satoshi, transaction_price) -> float:
         """Convert satoshi to fiat"""
 
-        received_btc = satoshi/1.0e8
-        received_dec = round(Decimal(received_btc * transaction_price), int(configloader.user_cfg["Payments"]["currency_exp"]))
+        received_btc = satoshi / 1.0e8
+        received_dec = round(Decimal(received_btc * transaction_price),
+                             int(configloader.user_cfg["Payments"]["currency_exp"]))
         return float(received_dec)
-    
+
     @classmethod
     def _sanitize_address(cls, address: str) -> str:
         return re.sub(r"[^a-zA-Z0-9]", "", address)
 
     def handle_update(self, address, status, satoshi, txid) -> str:
         """Handles Transaction Updates"""
-        
+
         address = self._sanitize_address(address)
 
         transaction = self.session.query(db.BtcTransaction).filter(db.BtcTransaction.address == address).one_or_none()
         if transaction and transaction.txid == "":
-            
+
             # Check the status
             if transaction.status == -1:
                 current_time = datetime.datetime.now()
                 timeout = 30
 
                 # If timeout has passed, use new btc price
-                if current_time - datetime.timedelta(minutes = timeout) > datetime.datetime.strptime(transaction.timestamp, '%Y-%m-%d %H:%M:%S.%f'):
+                if current_time - datetime.timedelta(minutes=timeout) > datetime.datetime.strptime(
+                        transaction.timestamp, '%Y-%m-%d %H:%M:%S.%f'):
                     transaction.price = Blockonomics.fetch_new_btc_price()
                 transaction.timestamp = current_time
                 transaction.status = 0
-                self.bot.send_message(transaction.user_id, "Payment recieved!\nYour account will be credited on confirmation.")
-            
+                self.bot.send_message(transaction.user_id,
+                                      "Payment recieved!\nYour account will be credited on confirmation.")
+
             if status == 2:
                 received_float = self._satoshi_to_fiat(satoshi, transaction.price)
 
@@ -164,7 +168,7 @@ class BlockonomicsPoll:
                     user=user,
                     value=int(received_float * (10 ** int(configloader.user_cfg["Payments"]["currency_exp"]))),
                     provider="Bitcoin",
-                    notes = address
+                    notes=address
                 )
 
                 # Add and commit the transaction
@@ -177,7 +181,7 @@ class BlockonomicsPoll:
                 self.session.commit()
 
                 self.bot.send_message(
-                    transaction.user_id, 
+                    transaction.user_id,
                     "Payment confirmed!\nYour account has been credited with %(received_float)s %(currency)s." % {
                         "received_float": received_float,
                         "currency": configloader.user_cfg["Payments"]["currency"]
@@ -191,4 +195,3 @@ class BlockonomicsPoll:
         else:
             self.session.commit()
             return "Transaction already proccessed"
-        

@@ -68,6 +68,10 @@ def factory(cfg: nuconfig.NuConfig):
             return self.bot.send_message(parse_mode="HTML", *args, **kwargs)
 
         @catch_telegram_errors
+        def edit_message_media(self, *args, **kwargs):
+            return self.bot.edit_message_media(*args, **kwargs)
+
+        @catch_telegram_errors
         def send_photo(self, *args, **kwargs):
             return self.bot.send_photo(parse_mode="HTML", *args, **kwargs)
 
