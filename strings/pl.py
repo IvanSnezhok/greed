@@ -3,6 +3,8 @@
 
 currency_symbol = "zł"
 
+currency_format_string = "{value} {symbol}"
+
 order_number = "Zamówienie #{id}"
 
 loading_transactions = "<i>Ładowanie transakcji...\n" \

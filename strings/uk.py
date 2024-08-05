@@ -3,6 +3,8 @@
 
 currency_symbol = "₴"
 
+currency_format_string = "{value} {symbol}"
+
 order_number = "Замовлення #{id}"
 
 loading_transactions = "<i>Завантажую транзакції...\n" \
